@@ -22,7 +22,7 @@ expression  : INT LOGOP INT
             | NAME;//add more
 
 
-OP          : '+'|'-'|'*'|'/'|'%'|'('|')';
+MATHOP          : '+'|'-'|'*'|'/'|'%'|'('|')';
 LOGOP       : '<'|'<='|'='|'!='|'=='|'>='|'>'|'or'|'and'|'not';
 
 NL : [\r\n]+;
