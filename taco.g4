@@ -6,10 +6,15 @@ program:    '{' (statement)+ '}';
 // do()
 //else
 // doElse()
-statement   : 'if' WS expression NL statement ('else' NL statement)?
-            | 'for' WS 'every' WS('odd'|'even'|'last')? 'item' ' ' 'in' ' ' NAME NL statement '\n'
+statement   : 'if' expression statement ('else' statement)?
+            | 'for' 'every' ('odd'|'even'|'last')? 'item' ' ' 'in' ' ' NAME NL statement '\n'
             | 'do'
+            | block
+            | printStatement
                 ;//add more
+
+block           : '{' statement* '}';
+printStatement  : 'print' expression ';';
 
 //Expression: Something which evaluates to a value. Example: 1+2/x
 //Statement: A line of code which does something. Example: GOTO 100
@@ -29,7 +34,7 @@ NL : [\r\n]+;
 NAME    : [A-Za-z]+;
 INT     : [0-9]+;
 TEXT    : [A-Za-z0-9]+;
-//WS      : [ \t\n\r]+;
-WS      : ' ';
-IGNORE  : '\t' ->skip;// '\t' ;//(' '|'\r'|'\t'|'\u000C'|'\n');
+WS      : [\t\n\r ]+ ->skip;
+//WS      : ' ';
+//IGNORE  : '\t' ->skip;// '\t' ;//(' '|'\r'|'\t'|'\u000C'|'\n');
 
