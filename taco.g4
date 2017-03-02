@@ -25,9 +25,13 @@ expression  : NAME
             | expression MATHOP expression
             | expression LOGOP expression;//add more
 
+dcl         : TYPE NAME DECL_SIGH expression;
+ass         : NAME DECL_SIGH expression;
 
 MATHOP          : '+'|'-'|'*'|'/'|'%'|'('|')';
 LOGOP       : '<'|'<='|'='|'!='|'=='|'>='|'>'|'or'|'and'|'not';
+DECL_SIGH   : '<-'; //int a <- 3
+
 
 //NL      : [\r\n]+ ->skip;
 NAME    : [A-Za-z]+;
