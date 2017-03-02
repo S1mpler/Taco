@@ -1,24 +1,26 @@
 package com.company;
 
-import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.ANTLRFileStream;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.io.IOException;
 
 public class TacoCompiler{
-    public static void main(String[] args) {
-        evaluate("test1.g4");
+    public static void main(String[] args) throws IOException {
+//        evaluate("test1.g4");
     }
 
-    private static void evaluate(String filename){
+    private static void evaluate(String filename) throws IOException {
         // Create input stream
         ANTLRInputStream inputStream = new ANTLRFileStream(filename);
         // Create lexer
-        SimpleLangLexer lexer = new SimpleLangLexer(inputStream);
+        tacoLexer lexer = new tacoLexer(inputStream);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
 
         // Create parser
-        SimpleLangParser parser = new SimpleLangParser(tokens);
+        tacoParser parser = new tacoParser(tokens);
         ParseTree tree = parser.program(); // begin parsing at expression rule
 
         // Type check
