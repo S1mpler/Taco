@@ -14,23 +14,21 @@ statement   : 'if' expression statement ('else' statement)?
                 ;//add more
 
 block           : '{' statement* '}';
-printStatement  : 'print' expression ';';
+printStatement  : 'print ' expression ';';
 
 //Expression: Something which evaluates to a value. Example: 1+2/x
 //Statement: A line of code which does something. Example: GOTO 100
 
-expression  : INT LOGOP INT
-            | NAME LOGOP INT
-            | NAME LOGOP NAME
-            | INT LOGOP NAME
+expression  : NAME
             | INT
-            | NAME;//add more
+            | expression MATHOP expression
+            | expression LOGOP expression;//add more
 
 
 MATHOP          : '+'|'-'|'*'|'/'|'%'|'('|')';
 LOGOP       : '<'|'<='|'='|'!='|'=='|'>='|'>'|'or'|'and'|'not';
 
-NL : [\r\n]+;
+NL      : [\r\n]+;
 NAME    : [A-Za-z]+;
 INT     : [0-9]+;
 TEXT    : [A-Za-z0-9]+;
