@@ -23,8 +23,10 @@ expression  : NAME
             | INT
             | '(' expression ')'
             | expression MATHOP expression
-            | expression LOGOP expression;//add more
+            | expression LOGOP e    xpression;//add more
 
+
+type : 'boolean' | 'int';
 
 MATHOP          : '+'|'-'|'*'|'/'|'%'|'('|')';
 LOGOP       : '<'|'<='|'='|'!='|'=='|'>='|'>'|'or'|'and'|'not';
