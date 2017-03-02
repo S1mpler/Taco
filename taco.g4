@@ -15,7 +15,7 @@ statement   : 'if' expression statement ('else' statement)?
             | dcl;//add more
 
 block           : '{' statement* '}';
-printStatement  : 'print' expression ';';
+printStatement  : 'show' expression ';';
 
 //Expression: Something which evaluates to a value. Example: 1+2/x
 //Statement: A line of code which does something. Example: GOTO 100
