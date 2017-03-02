@@ -21,6 +21,7 @@ printStatement  : 'print' expression ';';
 
 expression  : NAME
             | INT
+            | '(' expression ')'
             | expression MATHOP expression
             | expression LOGOP expression;//add more
 
