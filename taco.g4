@@ -1,15 +1,13 @@
 grammar taco;
 
-program:    '{' (statement)+ '}';
+program:    NAME '{' (statement)+ '}';
 
 //if 1=1
 // do()
 //else
 // doElse()
-statement   : 'if' expression statement ('else' statement)?
-            | 'for' 'every' ('odd'|'even'|'last')? 'item' ' ' 'in' ' ' NAME NL statement '\n'
-            | 'do'
-            | block
+statement   : 'if' expression block ('else' block)?
+            | ('do' expression 'times')? block
             | printStatement
             | ass
             | dcl;//add more
@@ -32,7 +30,7 @@ ass         : NAME DECL_SIGH expression;
 type : 'boolean' | 'int';
 
 MATHOP          : '+'|'-'|'*'|'/'|'%'|'('|')';
-LOGOP       : '<'|'<='|'='|'!='|'=='|'>='|'>'|'or'|'and'|'not';
+LOGOP       : '<'|'<='|'='|'!='|'>='|'>'|'or'|'and'|'not';
 DECL_SIGH   : '<-'; //int a <- 3
 
 
