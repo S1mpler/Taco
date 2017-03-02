@@ -23,10 +23,12 @@ expression  : NAME
             | INT
             | '(' expression ')'
             | expression MATHOP expression
-            | expression LOGOP expression;//add more
+            | expression LOGOP e    xpression;//add more
 
 dcl         : TYPE NAME DECL_SIGH expression;
 ass         : NAME DECL_SIGH expression;
+
+type : 'boolean' | 'int';
 
 MATHOP          : '+'|'-'|'*'|'/'|'%'|'('|')';
 LOGOP       : '<'|'<='|'='|'!='|'=='|'>='|'>'|'or'|'and'|'not';
