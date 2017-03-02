@@ -11,7 +11,8 @@ statement   : 'if' expression statement ('else' statement)?
             | 'do'
             | block
             | printStatement
-                ;//add more
+            | ass
+            | dcl;//add more
 
 block           : '{' statement* '}';
 printStatement  : 'print' expression ';';
@@ -25,7 +26,7 @@ expression  : NAME
             | expression MATHOP expression
             | expression LOGOP expression;//add more
 
-dcl         : TYPE NAME DECL_SIGH expression;
+dcl         : type NAME DECL_SIGH expression ';';
 ass         : NAME DECL_SIGH expression;
 
 type : 'boolean' | 'int';
