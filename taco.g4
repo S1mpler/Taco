@@ -23,7 +23,7 @@ expression  : NAME
             | INT
             | '(' expression ')'
             | expression MATHOP expression
-            | expression LOGOP e    xpression;//add more
+            | expression LOGOP expression;//add more
 
 dcl         : TYPE NAME DECL_SIGH expression;
 ass         : NAME DECL_SIGH expression;
