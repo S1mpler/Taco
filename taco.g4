@@ -28,11 +28,13 @@ expression  : NAME
 MATHOP          : '+'|'-'|'*'|'/'|'%'|'('|')';
 LOGOP       : '<'|'<='|'='|'!='|'=='|'>='|'>'|'or'|'and'|'not';
 
-NL      : [\r\n]+;
+//NL      : [\r\n]+ ->skip;
 NAME    : [A-Za-z]+;
 INT     : [0-9]+;
 TEXT    : [A-Za-z0-9]+;
-WS      : [\t\n\r ]+ ->skip;
 SPACE     : ' ' ->skip;
+ENTER   : '\n' ->skip;
+RETURN  : '\r' ->skip;
+TAB     : '\t' ->skip;
 //IGNORE  : '\t' ->skip;// '\t' ;//(' '|'\r'|'\t'|'\u000C'|'\n');
 
