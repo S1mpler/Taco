@@ -14,7 +14,7 @@ statement   : 'if' expression statement ('else' statement)?
                 ;//add more
 
 block           : '{' statement* '}';
-printStatement  : 'print ' expression ';';
+printStatement  : 'print' expression ';';
 
 //Expression: Something which evaluates to a value. Example: 1+2/x
 //Statement: A line of code which does something. Example: GOTO 100
@@ -33,6 +33,6 @@ NAME    : [A-Za-z]+;
 INT     : [0-9]+;
 TEXT    : [A-Za-z0-9]+;
 WS      : [\t\n\r ]+ ->skip;
-//WS      : ' ';
+SPACE     : ' ' ->skip;
 //IGNORE  : '\t' ->skip;// '\t' ;//(' '|'\r'|'\t'|'\u000C'|'\n');
 
