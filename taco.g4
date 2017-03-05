@@ -6,17 +6,19 @@ program:    NAME '{' (statement)+ '}';
 // do()
 //else
 // doElse()
-statement   : 'if' expression block ('else' block)?
-            | ('do' expression 'times')? block
+statement   : 'if' expression ((block ('else' block)?) | loop )
+            | loop
             | printStatement
             | ass
             | dcl;//add more
 
-block           : '{' statement* '}';
-printStatement  : 'show' expression ';';
+block           : '{' (statement)* '}';
+printStatement  : 'show' expression;
 
 //Expression: Something which evaluates to a value. Example: 1+2/x
 //Statement: A line of code which does something. Example: GOTO 100
+
+loop        : ('do' expression 'times') block;
 
 expression  : NAME
             | INT
@@ -27,14 +29,12 @@ expression  : NAME
 dcl         : type NAME DECL_SIGH expression ';';
 ass         : NAME DECL_SIGH expression;
 
-type : 'boolean' | 'int';
+type : 'boolean' | 'int' | 'string';
 
 MATHOP          : '+'|'-'|'*'|'/'|'%'|'('|')';
 LOGOP       : '<'|'<='|'='|'!='|'>='|'>'|'or'|'and'|'not';
 DECL_SIGH   : '<-'; //int a <- 3
 
-
-//NL      : [\r\n]+ ->skip;
 NAME    : [A-Za-z]+;
 INT     : [0-9]+;
 TEXT    : [A-Za-z0-9]+;
@@ -42,5 +42,4 @@ SPACE     : ' ' ->skip;
 ENTER   : '\n' ->skip;
 RETURN  : '\r' ->skip;
 TAB     : '\t' ->skip;
-//IGNORE  : '\t' ->skip;// '\t' ;//(' '|'\r'|'\t'|'\u000C'|'\n');
 
