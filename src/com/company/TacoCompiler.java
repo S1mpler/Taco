@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class TacoCompiler{
     public static void main(String[] args) throws IOException {
-//        evaluate("test1.g4");
+        evaluate("tests/sum.taco");
     }
 
     private static void evaluate(String filename) throws IOException {
@@ -25,12 +25,12 @@ public class TacoCompiler{
 
         // Type check
         // FIXME: Add a type checker!!
-        //    try {
-        //       TypeChecker typeChecker = new TypeChecker();
-        //       typeChecker.visit(tree);
-        //       System.out.println("No errors.");
-        //    } catch( CompileException ce ) {
-        //       System.err.println( "ERROR: " + ce.getMessage() );
-        //    }
+//        try {
+//            TypeChecker typeChecker = new TypeChecker();
+//            typeChecker.visit(tree);
+//            System.out.println("No errors.");
+//        } catch( CompileException ce ) {
+//            System.err.println( "ERROR: " + ce.getMessage() );
+//        }
     }
 }

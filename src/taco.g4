@@ -18,13 +18,12 @@ printStatement  : 'show' expression;
 //Expression: Something which evaluates to a value. Example: 1+2/x
 //Statement: A line of code which does something. Example: GOTO 100
 
+expression  : NAME                                                  #LiteralStringExpr
+            | INT                                                   #LiteralIntExpr
+            | leftBracket='(' expr=expression rightBracket=')'      #Brackets
+            | leftExpr=expression op=MATHOP rightExpr=expression    #MathExpression
+            | leftExpr=expression op=LOGOP rightExpr=expression     #LogExpression;//add more
 loop        : ('do' expression 'times') block;
-
-expression  : NAME
-            | INT
-            | '(' expression ')'
-            | expression MATHOP expression
-            | expression LOGOP expression;//add more
 
 dcl         : type NAME DECL_SIGH expression ';';
 ass         : NAME DECL_SIGH expression;
