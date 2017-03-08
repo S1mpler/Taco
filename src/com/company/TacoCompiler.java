@@ -25,12 +25,8 @@ public class TacoCompiler{
 
         // Type check
         // FIXME: Add a type checker!!
-        try {
-            TypeChecker typeChecker = new TypeChecker();
-            typeChecker.visit(tree);
-            System.out.println("No errors.");
-        } catch( CompileException ce ) {
-            System.err.println( "ERROR: " + ce.getMessage() );
-        }
+        TypeChecker typeChecker = new TypeChecker();
+        typeChecker.visit(tree);
+        System.out.println("No errors.");
     }
 }
