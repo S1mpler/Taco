@@ -7,11 +7,14 @@ public class TypeChecker extends tacoBaseVisitor{
     public Object visitMathExpression(tacoParser.MathExpressionContext tree) {
         //TODO: Visit the tree..
 
-        Object leftType = visit(tree.leftExpr);
+        DataType leftType = (DataType) visit(tree.leftExpr);
         DataType rightType = (DataType) visit(tree.rightExpr);
 
-        System.out.println("Test");
-
+        //TODO: Check if types are the same
         return null;
+    }
+
+    public DataType visitLiteralIntExpr(tacoParser.LiteralIntExprContext tree){
+        return DataType.INT;
     }
 }
