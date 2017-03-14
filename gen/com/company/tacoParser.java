@@ -22,7 +22,7 @@ public class tacoParser extends Parser {
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, MATHOP=14, LOGOP=15, DECL_SIGH=16, 
-		NAME=17, INT=18, TEXT=19, SPACE=20, ENTER=21, RETURN=22, TAB=23;
+		NAME=17, INT=18, BOOLEAN=19, TEXT=20, SPACE=21, ENTER=22, RETURN=23, TAB=24;
 	public static final int
 		RULE_program = 0, RULE_statement = 1, RULE_block = 2, RULE_printStatement = 3, 
 		RULE_expression = 4, RULE_loop = 5, RULE_dcl = 6, RULE_ass = 7, RULE_type = 8;
@@ -34,12 +34,12 @@ public class tacoParser extends Parser {
 	private static final String[] _LITERAL_NAMES = {
 		null, "'{'", "'}'", "'if'", "'else'", "'show'", "'('", "')'", "'do'", 
 		"'times'", "';'", "'boolean'", "'int'", "'string'", null, null, "'<-'", 
-		null, null, null, "' '", "'\n'", "'\r'", "'\t'"
+		null, null, null, null, "' '", "'\n'", "'\r'", "'\t'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, "MATHOP", "LOGOP", "DECL_SIGH", "NAME", "INT", "TEXT", "SPACE", 
-		"ENTER", "RETURN", "TAB"
+		null, null, "MATHOP", "LOGOP", "DECL_SIGH", "NAME", "INT", "BOOLEAN", 
+		"TEXT", "SPACE", "ENTER", "RETURN", "TAB"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -759,7 +759,7 @@ public class tacoParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\31`\4\2\t\2\4\3\t"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\32`\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\3\2\3\2\3\2"+
 		"\6\2\30\n\2\r\2\16\2\31\3\2\3\2\3\3\3\3\3\3\3\3\3\3\5\3#\n\3\3\3\5\3&"+
 		"\n\3\3\3\3\3\3\3\3\3\5\3,\n\3\3\4\3\4\7\4\60\n\4\f\4\16\4\63\13\4\3\4"+

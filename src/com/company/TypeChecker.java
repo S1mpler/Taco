@@ -1,12 +1,9 @@
 package com.company;
 
-import javax.xml.crypto.Data;
-
 /**
  * Created by Kris on 02-Mar-17.
  */
 public class TypeChecker extends tacoBaseVisitor<DataType>{
-
     @Override
     public DataType visitMathExpression(tacoParser.MathExpressionContext tree) throws TypeException {
         //TODO: Visit the tree..
