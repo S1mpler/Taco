@@ -27,6 +27,7 @@ public class TacoCompiler{
         // FIXME: Add a type checker!!
         TypeChecker typeChecker = new TypeChecker();
         typeChecker.visit(tree);
+        System.out.println(parser.getATN());
         System.out.println("No errors.");
     }
 }

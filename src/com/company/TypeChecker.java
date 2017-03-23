@@ -5,7 +5,7 @@ package com.company;
  */
 public class TypeChecker extends tacoBaseVisitor<DataType>{
     @Override
-    public DataType visitMathExpression(tacoParser.MathExpressionContext tree) throws TypeException {
+    public DataType visitMathExpression(tacoParser.MathExpressionContext tree) {
         //TODO: Visit the tree..
 
         DataType leftType = (DataType) visit(tree.leftExpr);
@@ -14,8 +14,8 @@ public class TypeChecker extends tacoBaseVisitor<DataType>{
         if (leftType == rightType) {
             return leftType;
         } else {
-            throw new TypeException("Not equal types in the expression");
         }
+        return null;
     }
 
     @Override
@@ -26,7 +26,6 @@ public class TypeChecker extends tacoBaseVisitor<DataType>{
     public DataType visitLiteralIntExpr(tacoParser.LiteralIntExprContext tree){
         return DataType.INT;
     }
-
     @Override
     public DataType visitLogExpression(tacoParser.LogExpressionContext ctx) {
         return DataType.BOOL;
