@@ -45,7 +45,7 @@ public class tacoBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements t
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMathExpression(tacoParser.MathExpressionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitIfStatement(tacoParser.IfStatementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -59,7 +59,21 @@ public class tacoBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements t
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitMathExpression(tacoParser.MathExpressionContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitBrackets(tacoParser.BracketsContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitLoadValue(tacoParser.LoadValueContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -73,7 +87,14 @@ public class tacoBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements t
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitLiteralStringExpr(tacoParser.LiteralStringExprContext ctx) { return visitChildren(ctx); }
+	@Override public T visitLiteralBoolExpr(tacoParser.LiteralBoolExprContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitAndOrExpression(tacoParser.AndOrExpressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -87,14 +108,14 @@ public class tacoBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements t
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDcl(tacoParser.DclContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAss(tacoParser.AssContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAss(tacoParser.AssContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDcl(tacoParser.DclContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -35,19 +35,25 @@ public interface tacoVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrintStatement(tacoParser.PrintStatementContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link tacoParser#ifStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIfStatement(tacoParser.IfStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code LogExpression}
+	 * labeled alternative in {@link tacoParser#condition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLogExpression(tacoParser.LogExpressionContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code MathExpression}
 	 * labeled alternative in {@link tacoParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitMathExpression(tacoParser.MathExpressionContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code LogExpression}
-	 * labeled alternative in {@link tacoParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLogExpression(tacoParser.LogExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Brackets}
 	 * labeled alternative in {@link tacoParser#expression}.
@@ -56,6 +62,13 @@ public interface tacoVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBrackets(tacoParser.BracketsContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code LoadValue}
+	 * labeled alternative in {@link tacoParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLoadValue(tacoParser.LoadValueContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code LiteralIntExpr}
 	 * labeled alternative in {@link tacoParser#expression}.
 	 * @param ctx the parse tree
@@ -63,12 +76,19 @@ public interface tacoVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLiteralIntExpr(tacoParser.LiteralIntExprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code LiteralStringExpr}
+	 * Visit a parse tree produced by the {@code LiteralBoolExpr}
 	 * labeled alternative in {@link tacoParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLiteralStringExpr(tacoParser.LiteralStringExprContext ctx);
+	T visitLiteralBoolExpr(tacoParser.LiteralBoolExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code AndOrExpression}
+	 * labeled alternative in {@link tacoParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAndOrExpression(tacoParser.AndOrExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link tacoParser#loop}.
 	 * @param ctx the parse tree
@@ -76,17 +96,17 @@ public interface tacoVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLoop(tacoParser.LoopContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link tacoParser#dcl}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDcl(tacoParser.DclContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link tacoParser#ass}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitAss(tacoParser.AssContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link tacoParser#dcl}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDcl(tacoParser.DclContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link tacoParser#type}.
 	 * @param ctx the parse tree
