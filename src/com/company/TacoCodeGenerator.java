@@ -20,11 +20,12 @@ public class TacoCodeGenerator extends tacoBaseVisitor<List<String>>{
         System.out.println("Prog");
         List<String> bytecode = new ArrayList<>();
 
-        for (ParseTree statement: ctx.statement()) {
-            //Visiting the childs should result in some strings, return that stuff
-            bytecode.addAll(visit(statement));
-            System.out.println("Test");
-        }
+//        for (ParseTree statement: ctx.()) {
+//            Visiting the childs should result in some strings, return that stuff
+//            bytecode.addAll(visit(statement));
+//        }
+        bytecode.addAll(visit(ctx.block()));
+        System.out.println("Test");
         return bytecode;
     }
 
@@ -41,6 +42,32 @@ public class TacoCodeGenerator extends tacoBaseVisitor<List<String>>{
 
         code.add(label +":");
         return code;
+    }
+
+    @Override
+    public List<String> visitFunctionDeclare(tacoParser.FunctionDeclareContext ctx) {
+        //TODO: Determine size of the stack / heap in this function
+        ArrayList<String> bytecode = new ArrayList<>();
+        //TODO: Determine functionvariables
+        bytecode.add(".method public " + ctx.NAME() + "(" + ")");
+        return super.visitFunctionDeclare(ctx);
+    }
+
+    @Override
+    public List<String> visitFunctionvariable(tacoParser.FunctionvariableContext ctx) {
+        ArrayList<String> bytecode = new ArrayList<>();
+        return bytecode;
+    }
+
+    @Override
+    public List<String> visitFunction(tacoParser.FunctionContext ctx) {
+
+        return super.visitFunction(ctx);
+    }
+
+    @Override
+    public List<String> visitArguments(tacoParser.ArgumentsContext ctx) {
+        return super.visitArguments(ctx);
     }
 
     @Override
@@ -91,7 +118,14 @@ public class TacoCodeGenerator extends tacoBaseVisitor<List<String>>{
     @Override
     public List<String> visitBlock(tacoParser.BlockContext ctx) {
         //TODO: How would a block work?
-        return new ArrayList<>();
+        ArrayList<String> bytecode = new ArrayList<>();
+        System.out.println("visiting block");
+
+        for (ParseTree statement: ctx.statement()) {
+//            Visiting the childs should result in some strings, return that stuff
+            bytecode.addAll(visit(statement));
+        }
+        return bytecode;
     }
 
     @Override
@@ -126,7 +160,28 @@ public class TacoCodeGenerator extends tacoBaseVisitor<List<String>>{
 
     @Override
     public List<String> visitLoop(tacoParser.LoopContext ctx) {
-        return new ArrayList<>();
+        System.out.println("Visiting loop");
+        //Load INT onto the stack
+        //Load counter onto the stack
+
+        String labelName = "begin"+(labelCount++);
+
+        ArrayList<String> bytecode = new ArrayList<>();
+        bytecode.add("iconst_0 ; Starting at 0");
+        bytecode.add("istore " + (vars.getVars().size() ));
+
+        bytecode.add(labelName + ":"); //Defines the label
+        bytecode.addAll(visit(ctx.block())); //This executes the code within the loop
+
+        //Start at 0
+
+        bytecode.add("iinc "+(vars.getVars().size())+" 1");
+        bytecode.add("iload  "+(vars.getVars().size()));
+        bytecode.add("bipush " + ctx.INT().getText());
+        bytecode.add("if_icmple " + labelName );//Jump to the label, but we need a way to end the loop
+        //if_icmpLE
+
+        return bytecode;
     }
 
     @Override

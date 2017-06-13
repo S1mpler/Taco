@@ -1,11 +1,13 @@
 grammar taco;
 
-program         : NAME '{' (statement)+ '}';
+program         : NAME block;
 
 statement       : ifStatement
                 | loop
                 | printStatement
                 | ass
+                | function
+                | functionDeclare
                 | dcl;//add more
 
 block           : '{' (statement)* '}';
@@ -23,7 +25,14 @@ expression      : NAME                                                  #LoadVal
 //                | leftExpr=expression op=LOGOP rightExpr=expression     #LogExpression//add more
                 | leftExpr=expression op=ANDOR rightExpr=expression     #AndOrExpression; //&& ||
 
-loop            : ('do' expression 'times') block;
+loop            : ('do' INT  'times') block;
+
+functionDeclare : 'makeTaco' NAME '(' functionvariable ')' block; //eat sum(int number1, int number2)
+functionvariable: type NAME;
+function        : 'eatTaco' NAME '('arguments*')' ;
+arguments       : (INT | BOOLEAN) (',' (INT | BOOLEAN))*;
+
+
 
 ass             : NAME DECL_SIGH expression;
 dcl             : type NAME DECL_SIGH expression;
