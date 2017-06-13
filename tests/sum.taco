@@ -1,5 +1,9 @@
 Sum{
     int name <- 12
-    name <- 13
+    name <- 13 * 19
     show name
+
+    do 10 times {
+        show name
+    }
 }
